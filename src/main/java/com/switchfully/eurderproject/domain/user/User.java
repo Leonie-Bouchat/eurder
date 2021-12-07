@@ -6,25 +6,25 @@ import java.util.UUID;
 
 public class User {
     private final String id;
-    private final String firstname;
-    private final String lastname;
+    private final String firstName;
+    private final String lastName;
     private final String email;
     private Address address;
     private String phoneNumber;
 
     private final Role role;
-    private String username;
+    private String userName;
     private String password;
 
     public User(Builder builder) {
         this.id = UUID.randomUUID().toString();
-        this.firstname = builder.firstname;
-        this.lastname = builder.lastname;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
         this.email = builder.email;
         this.address = builder.address;
         this.phoneNumber = builder.phoneNumber;
         this.role = builder.role;
-        this.username = builder.username;
+        this.userName = builder.userName;
         this.password = builder.password;
     }
 
@@ -32,12 +32,12 @@ public class User {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public Role getRole() {
@@ -45,19 +45,19 @@ public class User {
     }
 
     public static class Builder {
-        private final String firstname;  // obligated
-        private final String lastname;
+        private final String firstName;  // obligated
+        private final String lastName;
         private final Address address;
         private final Role role;
 
         private String email; // optional
         private String phoneNumber;
-        private String username;
+        private String userName;
         private String password;
 
         public Builder(String firstname, String lastname, Address address, Role role) {
-            this.firstname = firstname;
-            this.lastname = lastname;
+            this.firstName = firstname;
+            this.lastName = lastname;
             this.address = address;
             this.role = role;
         }
@@ -73,7 +73,7 @@ public class User {
         }
 
         public Builder withUsername(String username) {
-            this.username = username;
+            this.userName = username;
             return this;
         }
 
@@ -82,7 +82,7 @@ public class User {
             return this;
         }
 
-        public User build(){
+        public User build() {
             return new User(this);
         }
     }

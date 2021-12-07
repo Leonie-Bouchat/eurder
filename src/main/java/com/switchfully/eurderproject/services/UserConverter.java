@@ -10,16 +10,16 @@ public class UserConverter {
     public UserDto convertUserInUserDto(User user) {
         return new UserDto()
                 .setId(user.getId())
-                .setFirstname(user.getFirstname())
-                .setLastname(user.getLastname())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName())
                 .setRole(user.getRole());
     }
 
     public User convertCreateUserDtoInUser(CreateUserDto createUserDto) {
-        return new User.Builder(createUserDto.getFirstname(), createUserDto.getLastname(), createUserDto.getAddress(), createUserDto.getRole())
+        return new User.Builder(createUserDto.getFirstName(), createUserDto.getLastName(), createUserDto.getAddress(), createUserDto.getRole())
                 .withEmail(createUserDto.getEmail())
                 .withPhoneNumber(createUserDto.getPhoneNumber())
-                .withUsername(createUserDto.getUsername())
+                .withUsername(createUserDto.getUserName())
                 .withPassword(createUserDto.getPassword())
                 .build();
     }

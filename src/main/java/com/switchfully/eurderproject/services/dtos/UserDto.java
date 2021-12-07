@@ -1,16 +1,13 @@
 package com.switchfully.eurderproject.services.dtos;
 
-import com.switchfully.eurderproject.domain.user.Address;
 import com.switchfully.eurderproject.security.Role;
-
-import java.util.Objects;
 
 //record UserDto(String UserId, String firstName) {}
 
 public class UserDto {
     private String UserId;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private Role role;
 
     public UserDto setId(String UserId) {
@@ -18,13 +15,13 @@ public class UserDto {
         return this;
     }
 
-    public UserDto setFirstname(String firstname) {
-        this.firstname = firstname;
+    public UserDto setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
-    public UserDto setLastname(String lastname) {
-        this.lastname = lastname;
+    public UserDto setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 
@@ -37,12 +34,12 @@ public class UserDto {
         return UserId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public Role getRole() {
@@ -53,8 +50,8 @@ public class UserDto {
     public String toString() {
         return "UserDto{" +
                 "UserId='" + UserId + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstName + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", role=" + role +
                 '}';
     }

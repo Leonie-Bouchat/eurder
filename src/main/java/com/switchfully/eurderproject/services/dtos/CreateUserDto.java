@@ -2,38 +2,37 @@ package com.switchfully.eurderproject.services.dtos;
 
 import com.switchfully.eurderproject.domain.user.Address;
 import com.switchfully.eurderproject.security.Role;
-import lombok.Builder;
 import lombok.Getter;
 
-
+@Getter
 public class CreateUserDto {
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String email;
     private Address address;
     private String phoneNumber;
 
     private Role role;
-    private String username;
+    private String userName;
     private String password;
 
-    public CreateUserDto(String firstname, String lastname, String email, Address address, String phoneNumber, Role role, String username, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public CreateUserDto(String firstName, String lastName, String email, Address address, String phoneNumber, Role role, String userName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.role = role;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
@@ -52,8 +51,8 @@ public class CreateUserDto {
         return role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public String getPassword() {
