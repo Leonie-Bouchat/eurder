@@ -1,4 +1,6 @@
 package com.switchfully.eurderproject.security;
 
-public class Features {
+public enum Features {
+    GET_ALL_USERS,
+    GET_USER_BY_ID
 }

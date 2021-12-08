@@ -29,7 +29,9 @@ public class UserController {
 
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserById(@PathVariable("id") String id){
+    public UserDto getUserById(@PathVariable("id") String id,
+                               @RequestHeader String authorization){
+
         return userService.getUserById(id);
     }
 
