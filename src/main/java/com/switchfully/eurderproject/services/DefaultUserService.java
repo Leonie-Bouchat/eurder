@@ -6,6 +6,8 @@ import com.switchfully.eurderproject.services.dtos.CreateUserDto;
 import com.switchfully.eurderproject.services.dtos.UserDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DefaultUserService {
     private DefaultUserRepository userRepository;
@@ -20,5 +22,15 @@ public class DefaultUserService {
         User user = userConverter.convertCreateUserDtoInUser(createUserDto);
         User newUser = userRepository.saveById(user);
         return userConverter.convertUserInUserDto(newUser);
+    }
+
+    public UserDto getUserById(String id) {
+        User user = userRepository.getUserById(id);
+        return userConverter.convertUserInUserDto(user);
+    }
+
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepository.getAllUsers();
+        return userConverter.convertListOfUserInListOfUserDto(users);
     }
 }

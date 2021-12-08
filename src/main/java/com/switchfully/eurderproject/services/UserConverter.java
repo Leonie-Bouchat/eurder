@@ -5,6 +5,8 @@ import com.switchfully.eurderproject.services.dtos.CreateUserDto;
 import com.switchfully.eurderproject.services.dtos.UserDto;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class UserConverter {
     public UserDto convertUserInUserDto(User user) {
@@ -22,5 +24,10 @@ public class UserConverter {
                 .withUsername(createUserDto.getUserName())
                 .withPassword(createUserDto.getPassword())
                 .build();
+    }
+
+    public List<UserDto> convertListOfUserInListOfUserDto(List<User> users) {
+        List<UserDto> usersDto = users.stream().map(user -> convertUserInUserDto(user)).toList();
+        return usersDto;
     }
 }
