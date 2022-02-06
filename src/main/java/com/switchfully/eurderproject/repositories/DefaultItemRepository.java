@@ -3,19 +3,19 @@ package com.switchfully.eurderproject.repositories;
 import com.switchfully.eurderproject.domain.Item;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Repository
 @Getter
 public class DefaultItemRepository {
-    private ConcurrentHashMap<String, Item> items;
 
-    public DefaultItemRepository() {
-        items = new ConcurrentHashMap<>();
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public Item saveById(Item item) {
-        items.put(item.getItemId(), item);
+        entityManager.persist(item);
         return item;
     }
 }

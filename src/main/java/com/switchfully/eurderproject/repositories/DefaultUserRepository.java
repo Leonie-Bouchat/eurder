@@ -1,42 +1,39 @@
 package com.switchfully.eurderproject.repositories;
 
 import com.switchfully.eurderproject.domain.user.User;
-import com.switchfully.eurderproject.exceptions.ListOfUsersIsEmptyException;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 @Getter
 public class DefaultUserRepository {
 
-    private final ConcurrentHashMap<String, User> users;
-
-    public DefaultUserRepository() {
-        users = new ConcurrentHashMap<>();
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public User saveById(User user) {
-        users.put(user.getId(), user);
+//        if (users.contains(user.getUserName())) {
+//            throw new AlreadyExistsException("The userName already exists");
+//        }
+//        users.put(user.getId(), user);
+//        return user;
+        entityManager.persist(user);
         return user;
     }
 
     public User getUserById(String id) {
         assertThatArgumentIsNotNull(id);
-        assertThatListOfUserIsNotEmpty();
-        return users.get(id);
+        return entityManager.find(User.class, id);
     }
 
     public List<User> getAllUsers() {
-        return users.values().stream().toList();
-    }
-
-    private void assertThatListOfUserIsNotEmpty() {
-        if (users.isEmpty()) {
-            throw new ListOfUsersIsEmptyException("The repository is empty");
-        }
+        return entityManager
+                .createQuery("SELECT u FROM User u", User.class)
+                .getResultList();
     }
 
     private void assertThatArgumentIsNotNull(String id) {

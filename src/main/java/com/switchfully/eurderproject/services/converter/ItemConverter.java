@@ -1,4 +1,4 @@
-package com.switchfully.eurderproject.services;
+package com.switchfully.eurderproject.services.converter;
 
 import com.switchfully.eurderproject.domain.Item;
 import com.switchfully.eurderproject.services.dtos.CreateItemDto;
